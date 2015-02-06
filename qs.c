@@ -7,3 +7,4 @@ double clock()
 {
 	struct timeval tv;
 
+}
