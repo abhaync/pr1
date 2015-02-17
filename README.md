@@ -1,4 +1,2 @@
 # pr1
-First Repo
-My name is Abhay. I am new to Git.
-Hope the community helps me :)
+This README.md file is from branch 'sandeep'
