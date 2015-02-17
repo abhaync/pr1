@@ -1,3 +1,5 @@
+//Quick Sort
+
 #include<stdio.h>
 #include<stdlib.h>
 #include<sys/time.h>
@@ -7,4 +9,9 @@ double clock()
 {
 	struct timeval tv;
 
+}
+
+int main()
+{
+    return 0;
 }
