@@ -14,9 +14,11 @@ node *getnode()
 	return malloc(sizeof(node));
 }
 
+node *prev=head;
+
 void insert()
 {
-	node *temp,*prev;
+	node *temp;
 	temp=getnode();
 	temp->data=rand()%10;
 	temp->link=NULL;
@@ -27,12 +29,9 @@ void insert()
 	}
 	else
 	{
-		prev=head;
-		while(prev!=NULL)
-		{
-			prev=prev->link;
-		}
 		prev->link=temp;
+		prev=prev->link;
+		prev->link=NULL;
 	}
 	free(temp);
 	temp=NULL;
@@ -42,7 +41,7 @@ void makeloop()
 {
 	node *temp,*loop;
 	int count;
-	count=rand()%5;
+	count=3;
 	temp=head;
 	while(count!=0)
 	{
