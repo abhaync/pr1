@@ -38,24 +38,15 @@ void insert()
 	temp=NULL;
 }
 
+
 void makeloop()
 {
 	node *temp,*loop;
-	int count;
-	count=3;
-	temp=head;
-	while(count!=0)
-	{
-		temp=temp->link;
-		count--;
-	}
-	loop=temp;
-	temp=head;
 	while(temp!=NULL)
 	{
 		temp=temp->link;
 	}
-	temp->link=loop;
+	temp->link=head;
 }
 
 void detloop()
