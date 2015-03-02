@@ -15,7 +15,6 @@ node *getnode()
 }
 
 node *prev;
-prev=head;
 
 void insert()
 {
@@ -27,6 +26,7 @@ void insert()
 	{
 		head=temp;
 		head->link=NULL;
+		prev=head;
 	}
 	else
 	{
