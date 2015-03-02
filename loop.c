@@ -14,7 +14,7 @@ node *getnode()
 	return malloc(sizeof(node));
 }
 
-node *prev=NULL;
+node *prev;
 prev=head;
 
 void insert()
