@@ -7,14 +7,12 @@ typedef struct abb
 	struct abb *link;
 }node;
 
-node *head=NULL;
+node *head;
 
 node *getnode()
 {
 	return malloc(sizeof(node));
 }
-
-node *prev;
 
 void insert()
 {
@@ -26,13 +24,12 @@ void insert()
 	{
 		head=temp;
 		head->link=NULL;
-		prev=head;
 	}
 	else
 	{
-		prev->link=temp;
-		prev=prev->link;
-		prev->link=NULL;
+		temp->link=head;
+		head->link=NULL;
+		head=temp;
 	}
 	free(temp);
 	temp=NULL;
@@ -42,38 +39,44 @@ void insert()
 void makeloop()
 {
 	node *temp,*loop;
+	temp=getnode();
+	loop=getnode();
+	temp=head;
+	loop=temp->link;
+	loop=loop->link;
 	while(temp!=NULL)
 	{
 		temp=temp->link;
 	}
-	temp->link=head;
+	temp->link=loop;
+	free(temp);
+	free(loop);
+	temp=NULL;
+	loop=NULL;
 }
 
-void detloop()
+
+
+int hasLoop( node *startNode )
 {
-	node *tmp1,*tmp2;
-	tmp1=head;
-	tmp2=head;
-	while(1)
-	{
-		tmp1=tmp1->link;
-		tmp2=(tmp2->link)->link;
-		if(tmp1==tmp2)
-		{
-			printf("Loop Found\n:");
-			exit(0);
-		}
-		if(tmp1==NULL||tmp2==NULL)
-		{
-			printf("No Loop\n");
-			exit(0);
-		}
-	}
+    node *slowNode, *fastNode;
+    slowNode = fastNode = startNode;
+    while( slowNode && fastNode && fastNode->link )
+    {
+        if( slowNode == fastNode->link || slowNode == fastNode->link->link )
+        {
+            return 1;
+        }
+        slowNode = slowNode->link;
+        fastNode = fastNode->link->link;
+    }
+    return 0;
 }
 
 void menu()
 {
 	int ch;
+	int b;
 	printf("1.Insert\n");
 	printf("2.Makeloop\n");
 	printf("3.Detect Loop\n");
@@ -85,7 +88,15 @@ void menu()
 			break;
 		case 2: makeloop();
 			break;
-		case 3: detloop();
+		case 3: b=hasLoop(head);
+			if(b==1){
+			printf("Loop Found\n");
+			exit(0);
+			}
+			else{
+			printf("No loop\n");
+			exit(0);
+			}
 			break;
 		default : printf("Invalid Choice\n");
 			  break;
