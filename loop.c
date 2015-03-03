@@ -38,21 +38,6 @@ void insert()
 
 void makeloop()
 {
-	node *temp,*loop;
-	temp=getnode();
-	loop=getnode();
-	temp=head;
-	loop=temp->link;
-	loop=loop->link;
-	while(temp!=NULL)
-	{
-		temp=temp->link;
-	}
-	temp->link=loop;
-	free(temp);
-	free(loop);
-	temp=NULL;
-	loop=NULL;
 }
 
 
