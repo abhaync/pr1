@@ -20,9 +20,20 @@ void relax(int u, int v, int w)
 		pred[v]=u;
 	}
 }
+int negcycle(int n)
+{
+	int i,j;
+	for(i=0;i<n;i++){
+		for(j=0;j<n;j++){
+			if(d[j]>(d[i]+a[i][j]))
+				return 0;
+		}
+	}
+	return 1;
+}
 void main()
 {
-	int i,j,n,ch;
+	int i,j,n,ch,p;
 	printf("Enter the no. of vertices\n");
 	scanf("%d",&n);
 	printf("Enter the adjacency cost matrix\n");
@@ -47,4 +58,14 @@ void main()
 	for(i=0;i<n;i++)
 		printf("%d\t",pred[i]);
 	printf("\n");
+	p=negcycle(n);
+	if(p==1)
+	{
+		printf("No Negative weight Cycle\n");
+	}
+	else
+	{
+		printf("Negative Weight Cycle Present\n");
+	}
+
 }
