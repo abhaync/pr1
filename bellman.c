@@ -2,9 +2,10 @@
 #include<stdlib.h>
 #define INF 999
 int a[10][10],d[10],pred[10];
-void init(int s)
+void init(int s, int n)
 {
-	for(int i=0;i<n;i++)
+	int i;
+	for(i=0;i<n;i++)
 	{
 		d[i]=INF;
 		pred[i]=-1;
@@ -21,7 +22,7 @@ void relax(int u, int v, int w)
 }
 void main()
 {
-	int i,j,n,ch
+	int i,j,n,ch;
 	printf("Enter the no. of vertices\n");
 	scanf("%d",&n);
 	printf("Enter the adjacency cost matrix\n");
@@ -32,7 +33,7 @@ void main()
 	}
 	printf("Enter the source vertex\n");
 	scanf("%d",&ch);
-	init(ch);
+	init(ch,n);
 	for(i=0;i<n;i++){
 		for(j=0;j<n;j++){
 			relax(i,j,a[i][j]);
@@ -40,10 +41,10 @@ void main()
 	}
 	printf("The Distance array is \n");
 	for(i=0;i<n;i++)
-		printf("%d",d[i]);
+		printf("%d\t",d[i]);
 	printf("\n");
 	printf("The Predecessor array is \n");
 	for(i=0;i<n;i++)
-		printf("%d",pred[i]);
+		printf("%d\t",pred[i]);
 	printf("\n");
 }
