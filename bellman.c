@@ -14,10 +14,13 @@ void init(int s, int n)
 }
 void relax(int u, int v, int w)
 {
-	if(d[v]>(d[u]+a[u][v]))
+	if(a[u][v]>0)
 	{
-		d[v]=d[u]+a[u][v];
-		pred[v]=u;
+		if(d[v]>(d[u]+a[u][v]))
+		{
+			d[v]=d[u]+a[u][v];
+			pred[v]=u;
+		}
 	}
 }
 int negcycle(int n)
